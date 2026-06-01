@@ -19,11 +19,12 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # This new step installs Gradle directly on the cloud machine
+    # Lock Gradle to the stable 8.6 version so it doesn't break!
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: '8.6'
 
-    # We no longer need to grant permissions to a missing gradlew file
     - name: Compile and Build Debug APK
       run: gradle assembleDebug
 
