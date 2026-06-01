@@ -18,13 +18,14 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    # This new step installs Gradle directly on the cloud machine
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
 
+    # We no longer need to grant permissions to a missing gradlew file
     - name: Compile and Build Debug APK
-      run: ./gradlew assembleDebug
+      run: gradle assembleDebug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
