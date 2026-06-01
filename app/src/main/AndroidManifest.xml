@@ -3,6 +3,7 @@
     package="com.example.spendwiseapp">
 
     <application
+        android:name=".SpendwiseApplication"
         android:allowBackup="true"
         android:label="Spendwise"
         android:supportsRtl="true"
